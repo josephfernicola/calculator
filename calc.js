@@ -159,7 +159,7 @@ document.getElementById("add").addEventListener('click' , () => {
         console.log("Current Numnber:" , currentNumber)
         console.log("First Number DM Initial:" , firstNumberDMInitial)
         console.log("Operator:" , operator)
-        
+
         let breakAdd = false
 
         if (operator === "-") {
@@ -280,7 +280,7 @@ document.getElementById("add").addEventListener('click' , () => {
         displayValue.textContent = Math.round(answer);
         currentNumber = "";
         operator = ""
-        firstNumberDMInitial = true
+        firstNumberDMInitial = false;
         firstNumber = answer;
         }
     })
