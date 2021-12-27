@@ -156,7 +156,7 @@ document.getElementById("add").addEventListener('click' , () => {
 
     document.getElementById("multiply").addEventListener('click' , () => {
         console.log("First Number:" , firstNumber)
-        console.log("Current Numnber:" , currentNumber)
+        console.log("Current Number:" , currentNumber)
         console.log("First Number DM Initial:" , firstNumberDMInitial)
         console.log("Operator:" , operator)
 
@@ -186,7 +186,9 @@ document.getElementById("add").addEventListener('click' , () => {
             displayValue.textContent = "LMAO Try Again"
         
         }
-        if (operator === "/") {
+        else {
+        
+            if (operator === "/") {
             let answer = operate(operator, firstNumber, currentNumber);
             firstNumber = parseFloat(firstNumber) / parseFloat(currentNumber);
             displayValue.textContent = Math.round(answer);
@@ -213,6 +215,7 @@ document.getElementById("add").addEventListener('click' , () => {
     
         displayValue.textContent = Math.round(firstNumber);
         currentNumber = "" //reset current number
+    }
     });
 
     document.getElementById("divide").addEventListener('click' , () => {
@@ -263,7 +266,7 @@ document.getElementById("add").addEventListener('click' , () => {
         
         displayValue.textContent = Math.round(firstNumber);
         currentNumber = "";
-        } 
+    }
     });
 
     document.getElementById("equal").addEventListener('click' , () => { 
