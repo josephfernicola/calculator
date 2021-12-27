@@ -57,9 +57,6 @@ let firstNumberDMInitial  = true;
 let operator = ""
 
 document.getElementById("add").addEventListener('click' , () => {
-    console.log('firstNumber',firstNumber);
-    console.log('currentNumber',currentNumber);
-    console.log('operator' , operator);
     let breakAdd = false;
 
     if(operator === "*"){
@@ -68,6 +65,7 @@ document.getElementById("add").addEventListener('click' , () => {
         displayValue.textContent = answer;
         breakAdd = true;
         currentNumber = "";
+        operator = ""
     }
     if (operator === "-") {
         let answer = operate(operator, firstNumber, currentNumber);
@@ -75,6 +73,7 @@ document.getElementById("add").addEventListener('click' , () => {
         displayValue.textContent = answer;
         breakAdd = true;
         currentNumber = "";
+        operator = ""
     }
    
     if (operator == "/" && currentNumber == "0") {
@@ -86,6 +85,7 @@ document.getElementById("add").addEventListener('click' , () => {
         displayValue.textContent = Math.round(answer);
         breakAdd = true;
         currentNumber = "";
+        operator = ""
     }
     else {
     
@@ -94,18 +94,14 @@ document.getElementById("add").addEventListener('click' , () => {
     if(breakAdd || !currentNumber){
         return;
     }
-    console.log('firstNumber',firstNumber);
-    console.log('currentNumber',currentNumber);
-    firstNumber = parseFloat(firstNumber) + parseFloat(currentNumber);
+
+    firstNumber = parseInt(firstNumber) + parseInt(currentNumber);
     displayValue.textContent = Math.round(firstNumber);
     currentNumber = "" //reset current number
     }
 });
 
     document.getElementById("subtract").addEventListener('click' , () => {
-        console.log('firstNumber',firstNumber);
-        console.log('currentNumber',currentNumber);
-        console.log('operator' , operator);
         let breakAdd = false
        
         if(operator === "*"){
@@ -114,6 +110,7 @@ document.getElementById("add").addEventListener('click' , () => {
             displayValue.textContent = answer;
             breakAdd = true;
             currentNumber = "";
+            operator = ""
         }
         if (operator === "+") {
             let answer = operate(operator, firstNumber, currentNumber);
@@ -121,7 +118,7 @@ document.getElementById("add").addEventListener('click' , () => {
             displayValue.textContent = answer;
             breakAdd = true;
             currentNumber = "";
-            console.log("answer" , answer)
+            operator = ""
         }
         if (operator === "/" && currentNumber === "0") {
             displayValue.textContent = "LMAO Try Again"
@@ -132,6 +129,7 @@ document.getElementById("add").addEventListener('click' , () => {
             displayValue.textContent = Math.round(answer);
             breakAdd = true;
             currentNumber = "";
+            operator = ""
         }
         else {
 
@@ -140,8 +138,6 @@ document.getElementById("add").addEventListener('click' , () => {
         if(breakAdd || !currentNumber){
             return;
         }
-        console.log('firstNumber',firstNumber);
-        console.log('currentNumber',currentNumber);
         if (firstNumber === 0) {
             firstNumber = parseFloat(currentNumber) - parseFloat(firstNumber);
         }
@@ -155,9 +151,7 @@ document.getElementById("add").addEventListener('click' , () => {
     });
 
     document.getElementById("multiply").addEventListener('click' , () => {
-        console.log('firstNumber',firstNumber);
-        console.log('currentNumber',currentNumber);
-        console.log('operator' , operator);
+
         let breakAdd = false
         
         if(operator === "-"){
@@ -166,7 +160,8 @@ document.getElementById("add").addEventListener('click' , () => {
             displayValue.textContent = answer;
             breakAdd = true;
             currentNumber = "";
-            console.log("answer" , answer)
+            operator = ""
+            
         }
         if (operator === "+") {
             let answer = operate(operator, firstNumber, currentNumber);
@@ -174,10 +169,12 @@ document.getElementById("add").addEventListener('click' , () => {
             displayValue.textContent = answer;
             breakAdd = true;
             currentNumber = "";
-            console.log("answer" , answer)
+            operator = ""
+          
         }
         if (operator === "/" && currentNumber === "0") {
             displayValue.textContent = "LMAO Try Again"
+        
         }
         else if (operator === "/") {
             let answer = operate(operator, firstNumber, currentNumber);
@@ -185,7 +182,7 @@ document.getElementById("add").addEventListener('click' , () => {
             displayValue.textContent = Math.round(answer);
             breakAdd = true;
             currentNumber = "";
-            console.log("answer" , answer)
+            operator = ""
         }
         else {
  
@@ -205,8 +202,6 @@ document.getElementById("add").addEventListener('click' , () => {
     }
     });
     document.getElementById("divide").addEventListener('click' , () => {
-        console.log('firstNumber',firstNumber);
-        console.log('currentNumber',currentNumber);
         let breakAdd = false
 
         if(operator === "*"){
@@ -214,23 +209,21 @@ document.getElementById("add").addEventListener('click' , () => {
             firstNumber = parseFloat(firstNumber) * parseFloat(currentNumber);
             displayValue.textContent = answer;
             currentNumber = "";
-            console.log("answer" , answer)
+            operator = ""
         }
         if (operator === "-") {
             let answer = operate(operator, firstNumber, currentNumber);
             firstNumber = parseFloat(firstNumber) - parseFloat(currentNumber);
             displayValue.textContent = answer;
             currentNumber = "";
-            console.log("answer" , answer)
+            operator = ""
         }
         if (operator === "+") {
             let answer = operate(operator, firstNumber, currentNumber);
             firstNumber = parseFloat(firstNumber) + parseFloat(currentNumber);
-            //console.log("firstNumberInside" , firstNumber)
-            //console.log("answer" , answer)
             displayValue.textContent = answer;
             currentNumber = "";
-            //console.log('operator' , operator);
+            operator = ""
         }
         if (operator == "/" && currentNumber == "0") {
             displayValue.textContent = "LMAO Try Again"
@@ -254,12 +247,7 @@ document.getElementById("add").addEventListener('click' , () => {
         } 
     });
 
-    document.getElementById("equal").addEventListener('click' , () => {
-        console.log("Current Number" , currentNumber);
-        console.log("First Number" , firstNumber);
-        console.log("operator", operator);
-        console.log("DM initial" , firstNumberDMInitial);
-        
+    document.getElementById("equal").addEventListener('click' , () => { 
         if (operator == "" && firstNumber == 0) {
             displayValue.textContent = parseFloat(currentNumber)
         }
@@ -275,8 +263,6 @@ document.getElementById("add").addEventListener('click' , () => {
         firstNumberDMInitial = true
         firstNumber = answer;
         }
-//Fix the bug if a user hits enter before entering an operation
-   
     })
     document.getElementById("deletes").addEventListener('click' , () => {
         currentNumber = currentNumber.slice(0, -1);
